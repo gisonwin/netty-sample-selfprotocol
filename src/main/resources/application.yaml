@@ -1,0 +1,21 @@
+server:
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+tcp:
+  server:
+    port: 8300
+
+spring:
+  application:
+    # 应用名称
+    name: linose-service
+# 日志配置
+logging:
+  level:
+    com.gisonwin.netty: debug
+    org.springframework: warn

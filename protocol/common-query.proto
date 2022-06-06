@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package com.gisonwin.protobuf;
+/*
+ kind=101
+ 查询设备的温度request
+ */
+message temperatureQueryReq{
+  string sequenceID = 1;//业务流水号,保证全局唯一
+  string deviceID = 2;//设备id或设备代号
+}
+/*
+ kind=102
+ 查询设备的温度response
+ */
+message temperatureQueryResp{
+  string sequenceID = 1;
+  string deviceID = 2;
+  /*
+   温度 ℃
+  */
+  string temperature = 3;//温度
+}
+
+/*
+ kind=103
+ 查询设备的电流request
+ */
+message currentQueryReq{
+  string sequenceID = 1;//业务流水号,保证全局唯一
+  string deviceID = 2;//设备id或设备代号
+}
+/*
+ kind=104
+ 查询设备的电流response
+ */
+message currentQueryResp{
+  string sequenceID = 1;
+  string deviceID = 2;
+  /***
+   电流 安培 毫安
+   */
+  string current = 3;//电流  A,mA
+}
+/*
+ kind=105
+ 查询设备的电流request
+ */
+message voltageQueryReq{
+  string sequenceID = 1;//业务流水号,保证全局唯一
+  string deviceID = 2;//设备id或设备代号
+}
+/*
+ kind=106
+ 查询设备的电流response
+ */
+message voltageQueryResp{
+  string sequenceID = 1;
+  string deviceID = 2;
+  /**
+  电压 伏特V
+   */
+  string voltage = 3;//电压
+}
