@@ -219,4 +219,4 @@ public class NettyTcpServerBootstrap {
 
 本项目随springboot启动.本代码在openjdk11 & jetbrains idea社区版环境下测试通过.
 
-如果您有疑问或建议,请留言,谢谢!
+如果您有疑问或建议,请留言给gisonwin@qq.com,谢谢!
