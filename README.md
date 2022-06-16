@@ -220,3 +220,56 @@ public class NettyTcpServerBootstrap {
 本项目随springboot启动.本代码在openjdk11 & jetbrains idea社区版环境下测试通过.
 
 如果您有疑问或建议,请留言给gisonwin@qq.com,谢谢!
+
+### 7.替换Tomcat为Undertow
+
+- 先引入最新版本的spring-boot,并将默认tomcat容器替换为undertow
+
+    ```xml
+        <parent>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.7.0</version>
+        </parent>
+       ...
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- undertow -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-undertow</artifactId>
+            </dependency>
+    ```
+
+    
+
+- 测试undertow的性能
+
+    ```java
+    @RestController
+    public class PerformanceController {
+        @GetMapping("test")
+        public String test() {
+            var now = LocalDateTime.now().toString();
+            System.out.println("now==" + now);
+            return now;
+        }
+    }
+    ```
+
+- Jmeter测试该访问QPS
+
+    ![image-20220616153312235](image-20220616153312235.png)
+
+    ![image-20220616153107298](image-20220616153107298.png)
+
+    ![image-20220616153229730](image-20220616153229730.png)
+
